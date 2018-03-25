@@ -25,7 +25,7 @@ SECRET_KEY = 't8nwhxao@wcl-dc1*=)246a6r956q6jt+49-)c1j@a+_m(1l&b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.sdnstudy.com', '.fengyujc.com' '.fengyujc.xin']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.sdnstudy.com', '.fengyujc.com', '.fengyujc.xin', '112.74.177.210']
 
 
 # Application definition
