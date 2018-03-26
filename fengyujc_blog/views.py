@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post, Category
-from comments.forms import CommentForm
+from comments.forms import CommentForm, EmailForm
 from django.views.generic import ListView, DetailView
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
@@ -183,7 +183,14 @@ class PostDetailView(DetailView):
 class ContactView(ListView):
     model = Post
     template_name = 'fengyujc_blog/contact.html'
-    context_object_name = 'post_list'
+
+    def get_context_data(self, **kwargs):  # 覆写 get_context_data 的目的是将评论邮件表单传递给模板
+        context = super(ContactView, self).get_context_data(**kwargs)
+        form = EmailForm()
+        context.update({
+            'form': form,
+        })
+        return context
 
 
 class FullwidthView(ListView):

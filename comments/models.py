@@ -8,12 +8,22 @@ from django.utils.six import python_2_unicode_compatible
 @python_2_unicode_compatible
 class Comment(models.Model):
     name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=255)
+    email = models.EmailField(max_length=50)
     url = models.URLField(blank=True)
     text = models.TextField()
     created_time = models.DateField(auto_now_add=True)
 
     post = models.ForeignKey('fengyujc_blog.Post',  on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.text[:20]
+
+
+class Email(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=50)
+    title = models.CharField(max_length=255)
+    text = models.TextField()
 
     def __str__(self):
         return self.text[:20]
