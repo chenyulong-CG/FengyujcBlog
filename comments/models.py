@@ -20,10 +20,11 @@ class Comment(models.Model):
 
 
 class Email(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=50)
+    def __str__(self):
+        return self.name
+    name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
     title = models.CharField(max_length=255)
     text = models.TextField()
 
-    def __str__(self):
-        return self.text[:20]
+

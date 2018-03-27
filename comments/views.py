@@ -38,11 +38,15 @@ def post_email(request):
         # 用户提交的数据存在 request.POST 中，这是一个类字典对象
         # 利用这些数据构造 EmailForm 的实例，就生成了 Django 的表单
         form = EmailForm(request.POST)
+        print(form)
         if form.is_valid():
             email = form.save(commit=False)  # 利用表单的数据生成 Email 模型类的实例，但还不保存评论数据到数据库
             email.save()
+            print('test')
+            print(email)
             return 'fengyujc_blog:contact'
         else:
+
             context = {
                 "form": form,
             }

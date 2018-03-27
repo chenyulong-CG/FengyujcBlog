@@ -14,6 +14,8 @@ User是 Django已经写好的用户模型,
 # Create your models here.
 # 一个python类对应一个数据库表格
 class Category(models.Model):  # 分类
+    def __str__(self):
+        return self.name  # 返回名称，否则后台不会显示分类名
     """
         Django 要求模型必须继承 models.Model 类。
         Category 只需要一个简单的分类名 name 就可以了。
@@ -27,6 +29,8 @@ class Category(models.Model):  # 分类
 
 
 class Tag(models.Model):  # 标签
+    def __str__(self):
+        return self.name
     name = models.CharField(max_length=100)
 
 
