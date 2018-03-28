@@ -184,14 +184,6 @@ class ContactView(ListView):
     model = Post
     template_name = 'fengyujc_blog/contact.html'
 
-    def get_context_data(self, **kwargs):  # 覆写 get_context_data 的目的是将评论邮件表单传递给模板
-        context = super(ContactView, self).get_context_data(**kwargs)
-        form = EmailForm()
-        context.update({
-            'form': form,
-        })
-        return context
-
 
 class FullwidthView(ListView):
     model = Post

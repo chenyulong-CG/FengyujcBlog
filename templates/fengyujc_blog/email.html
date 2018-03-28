@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-12">
+                    <h1 class="page-title">联系作者</h1>
+                    <p style="font-size: larger">你的信件已发送到网站后台:</p>
+                    <article class="post">
+                        <output style="font-size: x-large;font-family: 'AR PL UKai CN'" >名称:{{ email_form.name }}</output>
+                        <output style="font-size: x-large;font-family: 'AR PL UKai CN'" >邮箱:{{ email_form.email }}</output>
+                        <output style="font-size: x-large;font-family: 'AR PL UKai CN'" >主题:{{ email_form.title }}</output>
+                        <output style="font-size: x-large;font-family: 'AR PL UKai CN'" >正文:</output>
+                        <output style="font-size: x-large;font-family: 'AR PL UKai CN'" >&emsp;&emsp;{{ email_form.text }}</output>
+                        <output> </output>
+                    </article>
+                    <p style="font-size: larger">很高兴收到你的来信,作者会及时回复!</p>
+                </main>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

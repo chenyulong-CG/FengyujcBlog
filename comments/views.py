@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from fengyujc_blog.models import Post
-from .models import Comment
+from .models import Comment, Email
 from .forms import CommentForm, EmailForm
 
 # Create your views here.
@@ -38,17 +38,17 @@ def post_email(request):
         # 用户提交的数据存在 request.POST 中，这是一个类字典对象
         # 利用这些数据构造 EmailForm 的实例，就生成了 Django 的表单
         form = EmailForm(request.POST)
-        print(form)
         if form.is_valid():
             email = form.save(commit=False)  # 利用表单的数据生成 Email 模型类的实例，但还不保存评论数据到数据库
             email.save()
-            print('test')
-            print(email)
-            return 'fengyujc_blog:contact'
+            context = {
+                "email_form": email,
+            }
+            return render(request, 'fengyujc_blog/email.html', context=context)
         else:
-
             context = {
                 "form": form,
             }
             return render(request, 'fengyujc_blog/contact.html', context=context)
-    return 'fengyujc_blog:contact'
+
+    return 'fengyujc_blog/contact.html'

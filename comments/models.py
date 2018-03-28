@@ -22,9 +22,15 @@ class Comment(models.Model):
 class Email(models.Model):
     def __str__(self):
         return self.name
+
+    def increase_emails(self):
+        self.emails += 1
+        self.save(update_fields=['emails'])
+
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     title = models.CharField(max_length=255)
     text = models.TextField()
 
+    emails = models.PositiveIntegerField(default=0)  # 该类型的值只允许为正整数或 0
 
